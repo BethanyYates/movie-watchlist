@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Movie Watchlist</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <header>
+        <h1>My Movie Watchlist</h1>
+        <p>Keep track of movies you want to watch!</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>Add a Movie</h2>
+
+            <form id="movie-form" novalidate>
+                <label for="movie-title">Movie Title:</label>
+                <input type="text" id="movie-title" placeholder="Enter movie title">
+
+                <label for="movie-genre">Genre:</label>
+                <select id="movie-genre">
+                    <option value="">Choose a genre</option>
+                    <option value="Action">Action</option>
+                    <option value="Adventure">Adventure</option>
+                    <option value="Comedy">Comedy</option>
+                    <option value="Drama">Drama</option>
+                    <option value="Fantasy">Fantasy</option>
+                    <option value="Horror">Horror</option>
+                    <option value="Romance">Romance</option>
+                    <option value="Sci-Fi">Sci-Fi</option>
+                    <option value="Thriller">Thriller</option>
+                </select>
+
+                <button type="submit">Add Movie</button>
+            </form>
+
+            <p id="form-message" role="status"></p>
+        </section>
+
+        <section>
+            <h2>My Watchlist</h2>
+
+            <ul id="movie-list"></ul>
+
+            <p id="empty-message">
+                Your watchlist is empty.
+                Add a movie to get started.
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <p>My Movie Watchlist</p>
+    </footer>
+
+</body>
+
+</html>
