@@ -18,32 +18,44 @@ const watchlist = {
         }
     ],
 
+    // Step 4: Toggle a movie's watched status
     toggleWatched(index) {
-        // TODO: Step 4
+        if (index >= 0 && index < this.movies.length) {
+            this.movies[index].watched = !this.movies[index].watched;
+        }
     },
 
+    // Step 4: Remove a movie
     removeMovie(index) {
-        // TODO: Step 4
+        if (index >= 0 && index < this.movies.length) {
+            this.movies.splice(index, 1);
+        }
     }
 };
 
-toggleWatched(index) {
-    // TODO: Step 4
-},
-
-removeMovie(index) {
-    // TODO: Step 4
-}
-};
-
-// Save movies to localStorage
+// Step 6: Save movies to localStorage
 function saveMovies() {
-    // TODO: Step 6
+    localStorage.setItem(
+        "movieWatchlist",
+        JSON.stringify(watchlist.movies)
+    );
 }
 
-// Load movies from localStorage
+// Step 6: Load movies from localStorage
 function loadMovies() {
-    // TODO: Step 6
+    const savedMovies = localStorage.getItem("movieWatchlist");
+
+    if (savedMovies !== null) {
+        try {
+            const parsedMovies = JSON.parse(savedMovies);
+
+            if (Array.isArray(parsedMovies)) {
+                watchlist.movies = parsedMovies;
+            }
+        } catch (error) {
+            console.error("Could not load saved movies:", error);
+        }
+    }
 }
 
 // Display movies on the webpage
@@ -117,11 +129,37 @@ function renderMovies() {
     });
 }
 
-// Handle form submission
+// Step 5: Handle form submission
 form.addEventListener("submit", (event) => {
     event.preventDefault();
 
-    // TODO: Step 5
+    const title = titleInput.value.trim();
+    const genre = genreSelect.value;
+
+    // Validate the form
+    if (title === "" || genre === "") {
+        message.textContent =
+            "Please enter a movie title and select a genre.";
+        return;
+    }
+
+    // Add the new movie
+    watchlist.movies.push({
+        title: title,
+        genre: genre,
+        watched: false
+    });
+
+    // Save and update the watchlist
+    saveMovies();
+    renderMovies();
+
+    // Reset the form
+    form.reset();
+
+    // Show success message
+    message.textContent =
+        "Movie added to your watchlist!";
 });
 
 // Load and display saved movies
