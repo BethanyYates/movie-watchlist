@@ -18,18 +18,15 @@ const watchlist = {
         }
     ],
 
-    // Step 4: Toggle a movie's watched status
+    // Switch between watched and not watched
     toggleWatched(index) {
-        if (index >= 0 && index < this.movies.length) {
-            this.movies[index].watched = !this.movies[index].watched;
-        }
+        this.movies[index].watched =
+            !this.movies[index].watched;
     },
 
-    // Step 4: Remove a movie
+    // Remove a movie from the array
     removeMovie(index) {
-        if (index >= 0 && index < this.movies.length) {
-            this.movies.splice(index, 1);
-        }
+        this.movies.splice(index, 1);
     }
 };
 
