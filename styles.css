@@ -79,3 +79,39 @@ footer {
     padding: 20px;
     color: #64748b;
 }
+
+/* Movie cards */
+#movie-list li {
+    background-color: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+/* Movie titles */
+#movie-list h3 {
+    color: #1e3a5f;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+/* Movie details */
+#movie-list p {
+    color: #64748b;
+    margin-bottom: 15px;
+}
+
+/* Movie buttons */
+#movie-list button {
+    margin-right: 10px;
+}
+
+/* Remove button */
+#movie-list button:last-child {
+    background-color: #dc2626;
+}
+
+#movie-list button:last-child:hover {
+    background-color: #b91c1c;
+}
