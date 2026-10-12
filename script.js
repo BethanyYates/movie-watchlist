@@ -128,35 +128,57 @@ function renderMovies() {
 
 // Step 5: Handle form submission
 form.addEventListener("submit", (event) => {
+
+    // Prevent the page from refreshing
     event.preventDefault();
 
+    // Get the movie title and selected genre
     const title = titleInput.value.trim();
     const genre = genreSelect.value;
 
-    // Validate the form
-    if (title === "" || genre === "") {
-        message.textContent =
-            "Please enter a movie title and select a genre.";
+    // Clear any previous error messages
+    message.textContent = "";
+
+    // Check if the movie title is blank
+    if (title === "") {
+        message.textContent = "Enter a movie title.";
         return;
     }
 
-    // Add the new movie
-    watchlist.movies.push({
+    // Check if a genre has been selected
+    if (genre === "") {
+        message.textContent = "Choose a genre.";
+        return;
+    }
+
+    // Create a new movie object
+    const newMovie = {
         title: title,
         genre: genre,
         watched: false
-    });
+    };
 
-    // Save and update the watchlist
+    // Add the movie to the watchlist array
+    watchlist.movies.push(newMovie);
+
+    // Save the updated movie list
     saveMovies();
+
+    // Display the updated movie list
     renderMovies();
 
-    // Reset the form
-    form.reset();
+    // Clear the movie title input
+    titleInput.value = "";
 
-    // Show success message
-    message.textContent =
-        "Movie added to your watchlist!";
+    // Reset the genre dropdown
+    genreSelect.value = "";
+
+// Reset the form
+form.reset();
+
+// Show success message
+message.textContent =
+    "Movie added to your watchlist!";
 });
 
 // Load and display saved movies
