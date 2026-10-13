@@ -40,18 +40,24 @@ function saveMovies() {
 
 // Step 6: Load movies from localStorage
 function loadMovies() {
-    const savedMovies = localStorage.getItem("movieWatchlist");
+    try {
+        // Get saved movies from localStorage
+        const savedMovies =
+            localStorage.getItem("movieWatchlist");
 
-    if (savedMovies !== null) {
-        try {
+        // Check if saved data exists
+        if (savedMovies !== null) {
+            // Convert the JSON string into an array
             const parsedMovies = JSON.parse(savedMovies);
 
+            // Make sure the saved data is an array
             if (Array.isArray(parsedMovies)) {
                 watchlist.movies = parsedMovies;
             }
-        } catch (error) {
-            console.error("Could not load saved movies:", error);
         }
+    } catch (error) {
+        console.error("Error loading movies:", error);
+        watchlist.movies = [];
     }
 }
 
@@ -173,12 +179,12 @@ form.addEventListener("submit", (event) => {
     // Reset the genre dropdown
     genreSelect.value = "";
 
-// Reset the form
-form.reset();
+    // Reset the form
+    form.reset();
 
-// Show success message
-message.textContent =
-    "Movie added to your watchlist!";
+    // Show success message
+    message.textContent =
+        "Movie added to your watchlist!";
 });
 
 // Load and display saved movies
