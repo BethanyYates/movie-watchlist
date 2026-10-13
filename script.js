@@ -10,13 +10,7 @@ const emptyMessage = document.getElementById("empty-message");
 
 // Watchlist object
 const watchlist = {
-    movies: [
-        {
-            title: "The Princess Bride",
-            genre: "Adventure",
-            watched: false
-        }
-    ],
+    movies: [],
 
     // Switch between watched and not watched
     toggleWatched(index) {
